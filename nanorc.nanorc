@@ -1,16 +1,27 @@
-## Here is an example for nanorc files.
-##
 syntax "Nanorc" "\.?nanorc$"
-## Possible errors and parameters
-icolor brightwhite "^[[:space:]]*((un)?set|include|syntax|i?color).*$"
-## Keywords
-icolor brightgreen "^[[:space:]]*(set|unset)[[:space:]]+(autoindent|backup|backupdir|backwards|boldtext|brackets|casesensitive|const|cut|fill|historylog|matchbrackets|morespace|mouse|multibuffer|noconvert|nofollow|nohelp|nonewlines|nowrap|operatingdir|preserve|punct)\>" "^[[:space:]]*(set|unset)[[:space:]]+(quickblank|quotestr|rebinddelete|rebindkeypad|regexp|smarthome|smooth|speller|suspend|tabsize|tabstospaces|tempfile|undo|view|whitespace|wordbounds)\>"
-icolor green "^[[:space:]]*(set|unset|include|syntax|header)\>"
-## Colors
-icolor yellow "^[[:space:]]*i?color[[:space:]]*(bright)?(white|black|red|blue|green|yellow|magenta|cyan)?(,(white|black|red|blue|green|yellow|magenta|cyan))?\>"
-icolor magenta "^[[:space:]]*i?color\>" "\<(start|end)="
-## Strings
-icolor white ""(\\.|[^"])*""
-## Comments
-icolor brightblue "^[[:space:]]*#.*$"
-icolor cyan "^[[:space:]]*##.*$"
+# trailing space
+color ,white "[[:space:]]+$"
+# key binding
+icolor red "\^[A-Z,\[]" "M\-[A-Z]" "(\^|M\-)Space"
+# color
+icolor yellow "(bright)?(white|black|red|blue|green|yellow|magenta|cyan)\>"
+# string
+icolor green ""(\\.|[^"])*""
+# menu
+icolor cyan "(main|search|all)"
+# settings
+icolor yellow "(autoindent|constantshow|historylog|locking|morespace)"
+icolor yellow "(mouse|multibuffer|positionlog|smarthome|softwrap)"
+icolor yellow "(tabsize|tabstospaces)"
+# function
+icolor yellow "(help|cutwordright|cutwordleft|exit|writeout|savefile)"
+icolor yellow "(insert|whereis|searchagain|replace|(un)?cut|copytext)"
+icolor yellow "(mark|(un)?indent|comment|prevword|nextword|undo|redo)"
+# command
+icolor magenta "^[[:space:]]*((un)?set|(un)?bind)\>"
+icolor magenta "^[[:space:]]*(include|syntax|i?color|extendsyntax)\>"
+icolor magenta "^[[:space:]]*(linter|formatter|header|magic|comment)\>"
+# rc file
+color green "[[:space:]].*rc$"
+# comments (must be the last to overwrite others)
+color blue "#.*$"
