@@ -1,0 +1,21 @@
+syntax "Cfgrc" "\.?cfg$"
+# trailing space
+color ,blue "[[:space:]]+$"
+# settings
+icolor magenta "(number_of_samples|post_trigger_percentage)"
+icolor magenta "(software|internal|external)_trigger_mode"
+icolor magenta "external_trigger_source"
+icolor magenta "channel_(DC_offset|trigger_threshold)"
+icolor magenta "coincidence_(window|level)"
+icolor magenta "channel_enable_(trigger|recording)"
+# option
+icolor green "(yes|no)"
+icolor green "(TTL|NIM)"
+icolor green "(disabled|extout_only|acq_only|acq_and_extout)"
+# numbers
+icolor cyan "[0-9]+"
+# section
+icolor red "\[common\]"
+icolor red "\[[0-4]\]"
+# comments (must be the last to overwrite others)
+color white "#.*$"
